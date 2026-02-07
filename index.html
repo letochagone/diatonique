@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+    <!--
+fondy-K --------------
+                  xxxx
+                  xxxx
+                  xxxx
+                  xxxx
+fondy-K/2 ------------------
+                  xxxx
+                  xxxx
+                  xxxx
+                  xxxx
+fondy -----------========================
+                 |xxxx      xx      xx 
+                 |xxxx      xx      xx
+                 |xxxx      xx      xx
+fondy+fondh/2 -------------------------
+                 |xxxx      xx      xx
+                 |xxxx      xx      xx
+                 |xxxx      xx      xx
+                 ======================
+    -->
+
+<svg id="svg" width="3000" height="600" viewBox="0 0 300 300">
+	<rect width="3000" height="600" x="0" y="0" fill="yellow" />
+
+    <g id="octave"></g>
+
+<use  id="octave2"  y="0" xlink:href="#octave" />
+<use  id="octave3"  y="0" xlink:href="#octave" />
+<use  id="octave4"  y="0" xlink:href="#octave" />
+<use  id="octave5"  y="0" xlink:href="#octave" />
+<use  id="octave6"  y="0" xlink:href="#octave" />
+
+
+</svg>
+
+<script>
+
+let leSVG = document.getElementById("svg");
+
+let fondx=50;
+let fondy=200;
+let fondh=250;
+
+let K=50;
+
+
+let bN = 5;
+let lC=7;
+let bC=1;
+
+
+let L=40;
+
+
+let long= (bN + lC*9+bC*8)*5+ (bN+4*lC+3*bC)*2;
+
+
+let svgNS = "http://www.w3.org/2000/svg";
+let g = document.getElementById("octave");
+
+let octave2 = document.getElementById("octave2");
+octave2.setAttribute("x",long);
+let octave3 = document.getElementById("octave3");
+octave3.setAttribute("x",long*2);
+let octave4 = document.getElementById("octave4");
+octave4.setAttribute("x",long*3);
+let octave5 = document.getElementById("octave5");
+octave5.setAttribute("x",long*4);
+let octave6 = document.getElementById("octave6");
+octave6.setAttribute("x",long*5);
+
+{
+let ligne = document.createElementNS(svgNS,"line");
+ligne.setAttribute("x1",fondx);
+ligne.setAttribute("x2",fondx+long);
+ligne.setAttribute("y1",fondy-K/2);
+ligne.setAttribute("y2",fondy-K/2);
+ligne.setAttribute("stroke-width",K);
+ligne.setAttribute("stroke","gray");
+let A=lC*9+bC*8;
+let B=lC*4+bC*3;
+let dasharray=
+  bN + " " +
+  A + " " +
+  bN + " " +
+  A + " " +
+  bN + " " +
+  B +  " " +
+  bN + " " +
+  A + " " +
+  bN + " " +
+  A + " " +
+  bN + " " +
+  A + " " +
+  bN + " " +
+  B ;
+  
+
+ligne.setAttribute("stroke-dasharray",dasharray);
+    g.appendChild(ligne);
+
+
+}
+
+
+
+/*
+var el = document.getElementById('tp');
+var style = window.getComputedStyle(el, null).getPropertyValue('font-size');
+var fontSize = parseFloat(style); 
+console.log(fontSize);
+*/
+
+
+
+
+
+let fondVert= document.createElementNS(svgNS,"rect");
+fondVert.setAttribute("x",fondx);
+fondVert.setAttribute("y",fondy);
+fondVert.setAttribute("width",long);
+
+fondVert.setAttribute("height",fondh);
+fondVert.setAttribute("fill","green");
+
+g.appendChild(fondVert);
+
+{
+    /*
+    let d="M"+(fondx+bN/2-L/2)+" "+150+" h "+L;
+    let pathDO = document.getElementById("pathDO");
+    pathDO.setAttribute("d",d);
+    */
+}
+
+
+{
+let cercleNotes= document.createElementNS(svgNS,"circle");
+cercleNotes.setAttribute("cx",fondx+bN/2);
+cercleNotes.setAttribute("cy",fondy-K);
+cercleNotes.setAttribute("r",L/2);
+cercleNotes.setAttribute("stroke","black");
+cercleNotes.setAttribute("fill","red");
+g.appendChild(cercleNotes);
+}
+
+{
+let deca = bN+9*lC + 8*bC;
+let cercleNotes= document.createElementNS(svgNS,"circle");
+cercleNotes.setAttribute("cx",fondx+bN/2 + deca);
+cercleNotes.setAttribute("cy",fondy-K);
+cercleNotes.setAttribute("r",L/2);
+cercleNotes.setAttribute("stroke","black");
+cercleNotes.setAttribute("fill","none");
+g.appendChild(cercleNotes);
+}
+
+{
+let deca = 2*( bN+9*lC + 8*bC ) ;
+let cercleNotes= document.createElementNS(svgNS,"circle");
+cercleNotes.setAttribute("cx",fondx+bN/2 + deca);
+cercleNotes.setAttribute("cy",fondy-K);
+cercleNotes.setAttribute("r",L/2);
+cercleNotes.setAttribute("stroke","black");
+cercleNotes.setAttribute("fill","none");
+g.appendChild(cercleNotes);
+}
+
+{
+let deca = 2*( bN+9*lC + 8*bC ) + (bN+4*lC+3*bC);
+let cercleNotes= document.createElementNS(svgNS,"circle");
+cercleNotes.setAttribute("cx",fondx+bN/2 + deca);
+cercleNotes.setAttribute("cy",fondy-K);
+cercleNotes.setAttribute("r",L/2);
+cercleNotes.setAttribute("stroke","black");
+cercleNotes.setAttribute("fill","none");
+g.appendChild(cercleNotes);
+}
+
+
+
+{
+let deca = 3*( bN+9*lC + 8*bC ) + (bN+4*lC+3*bC);
+let cercleNotes= document.createElementNS(svgNS,"circle");
+cercleNotes.setAttribute("cx",fondx+bN/2 + deca);
+cercleNotes.setAttribute("cy",fondy-K);
+cercleNotes.setAttribute("r",L/2);
+cercleNotes.setAttribute("stroke","black");
+cercleNotes.setAttribute("fill","none");
+g.appendChild(cercleNotes);
+}
+
+
+{
+let deca = 4*( bN+9*lC + 8*bC ) + (bN+4*lC+3*bC);
+let cercleNotes= document.createElementNS(svgNS,"circle");
+cercleNotes.setAttribute("cx",fondx+bN/2 + deca);
+cercleNotes.setAttribute("cy",fondy-K);
+cercleNotes.setAttribute("r",L/2);
+cercleNotes.setAttribute("stroke","black");
+cercleNotes.setAttribute("fill","none");
+g.appendChild(cercleNotes);
+}
+
+
+
+{
+let deca = 5*( bN+9*lC + 8*bC ) + (bN+4*lC+3*bC);
+let cercleNotes= document.createElementNS(svgNS,"circle");
+cercleNotes.setAttribute("cx",fondx+bN/2 + deca);
+cercleNotes.setAttribute("cy",fondy-K);
+cercleNotes.setAttribute("r",L/2);
+cercleNotes.setAttribute("stroke","black");
+cercleNotes.setAttribute("fill","none");
+g.appendChild(cercleNotes);
+}
+
+
+/*        
+             fondx
+---------------|----bN----|
+
+*/
+
+{
+
+    let path = document.createElementNS(svgNS,"path");
+    path.setAttribute("id","pathDO");
+    path.setAttribute("d","M "+(fondx+bN/2-L/2)+" "+(fondy-K)+" h "+L);
+    path.setAttribute("pathLength","2");
+    path.setAttribute("stroke","none");
+
+    g.appendChild(path);
+
+
+    let textPath = document.createElementNS(svgNS,"textPath");
+    textPath.setAttribute("href","#pathDO");
+    textPath.setAttribute("startOffset","1");
+    textPath.setAttribute("text-anchor","middle");
+    textPath.setAttribute("dominant-baseline","central");
+    textPath.setAttribute("fill","black");
+
+    const textNode = document.createTextNode("DO");
+    textPath.appendChild(textNode);
+
+    let text= document.createElementNS(svgNS,"text");
+    text.appendChild(textPath);
+
+    g.appendChild(text);
+
+
+}
+
+
+{
+
+    let path = document.createElementNS(svgNS,"path");
+    path.setAttribute("id","pathRE");
+    path.setAttribute("d","M "+(bN+9*lC+8*bC+fondx+bN/2-L/2)+" "+(fondy-K)+" h "+L);
+    path.setAttribute("pathLength","2");
+    path.setAttribute("stroke","none");
+
+    g.appendChild(path);
+
+
+    let textPath = document.createElementNS(svgNS,"textPath");
+    textPath.setAttribute("href","#pathRE");
+    textPath.setAttribute("startOffset","1");
+    textPath.setAttribute("text-anchor","middle");
+    textPath.setAttribute("dominant-baseline","central");
+    textPath.setAttribute("fill","black");
+
+    const textNode = document.createTextNode("RE");
+    textPath.appendChild(textNode);
+
+    let text= document.createElementNS(svgNS,"text");
+    text.appendChild(textPath);
+
+    g.appendChild(text);
+
+
+}
+
+{
+
+    let path = document.createElementNS(svgNS,"path");
+    path.setAttribute("id","pathMI");
+    path.setAttribute("d","M "+(2*(bN+9*lC+8*bC)+fondx+bN/2-L/2)+" "+(fondy-K)+" h "+L);
+    path.setAttribute("pathLength","2");
+    path.setAttribute("stroke","none");
+
+    g.appendChild(path);
+
+    let textPath = document.createElementNS(svgNS,"textPath");
+    textPath.setAttribute("href","#pathMI");
+    textPath.setAttribute("startOffset","1");
+    textPath.setAttribute("text-anchor","middle");
+    textPath.setAttribute("dominant-baseline","central");
+    textPath.setAttribute("fill","black");
+
+    const textNode = document.createTextNode("MI");
+    textPath.appendChild(textNode);
+
+    let text= document.createElementNS(svgNS,"text");
+    text.appendChild(textPath);
+
+    g.appendChild(text);
+}
+
+//FA
+{
+
+    let B=lC*4+bC*3;
+
+    let path = document.createElementNS(svgNS,"path");
+    path.setAttribute("id","pathFA");
+    path.setAttribute("d","M "+(bN+4*lC+3*bC +  2*(bN+9*lC+8*bC)+fondx+bN/2-L/2)+" "+(fondy-K)+" h "+L);
+    path.setAttribute("pathLength","2");
+    path.setAttribute("stroke","none");
+
+    g.appendChild(path);
+
+    let textPath = document.createElementNS(svgNS,"textPath");
+    textPath.setAttribute("href","#pathFA");
+    textPath.setAttribute("startOffset","1");
+    textPath.setAttribute("text-anchor","middle");
+    textPath.setAttribute("dominant-baseline","central");
+    textPath.setAttribute("fill","black");
+
+    const textNode = document.createTextNode("FA");
+    textPath.appendChild(textNode);
+
+    let text= document.createElementNS(svgNS,"text");
+    text.appendChild(textPath);
+
+    g.appendChild(text);
+}
+
+//SOL
+{
+
+    let B=lC*4+bC*3;
+
+    let path = document.createElementNS(svgNS,"path");
+    path.setAttribute("id","pathSOL");
+    path.setAttribute("d","M "+(bN+4*lC+3*bC +  3*(bN+9*lC+8*bC)+fondx+bN/2-L/2)+" "+(fondy-K)+" h "+L);
+    path.setAttribute("pathLength","2");
+    path.setAttribute("stroke","none");
+
+    g.appendChild(path);
+
+    let textPath = document.createElementNS(svgNS,"textPath");
+    textPath.setAttribute("href","#pathSOL");
+    textPath.setAttribute("startOffset","1");
+    textPath.setAttribute("text-anchor","middle");
+    textPath.setAttribute("dominant-baseline","central");
+    textPath.setAttribute("fill","black");
+
+    const textNode = document.createTextNode("SOL");
+    textPath.appendChild(textNode);
+
+    let text= document.createElementNS(svgNS,"text");
+    text.appendChild(textPath);
+
+    g.appendChild(text);
+}
+
+//LA
+{
+
+    let B=lC*4+bC*3;
+
+    let path = document.createElementNS(svgNS,"path");
+    path.setAttribute("id","pathLA");
+    path.setAttribute("d","M "+(bN+4*lC+3*bC +  4*(bN+9*lC+8*bC)+fondx+bN/2-L/2)+" "+(fondy-K)+" h "+L);
+    path.setAttribute("pathLength","2");
+    path.setAttribute("stroke","none");
+
+    g.appendChild(path);
+
+    let textPath = document.createElementNS(svgNS,"textPath");
+    textPath.setAttribute("href","#pathLA");
+    textPath.setAttribute("startOffset","1");
+    textPath.setAttribute("text-anchor","middle");
+    textPath.setAttribute("dominant-baseline","central");
+    textPath.setAttribute("fill","black");
+
+    const textNode = document.createTextNode("LA");
+    textPath.appendChild(textNode);
+
+    let text= document.createElementNS(svgNS,"text");
+    text.appendChild(textPath);
+
+    g.appendChild(text);
+}
+
+//SI
+{
+
+    let B=lC*4+bC*3;
+
+    let path = document.createElementNS(svgNS,"path");
+    path.setAttribute("id","pathSI");
+    path.setAttribute("d","M "+(  (bN+4*lC+3*bC) +  5*(bN+9*lC+8*bC)+fondx+bN/2-L/2)+" "+(fondy-K)+" h "+L);
+    path.setAttribute("pathLength","2");
+    path.setAttribute("stroke","none");
+
+    g.appendChild(path);
+
+    let textPath = document.createElementNS(svgNS,"textPath");
+    textPath.setAttribute("href","#pathSI");
+    textPath.setAttribute("startOffset","1");
+    textPath.setAttribute("text-anchor","middle");
+    textPath.setAttribute("dominant-baseline","central");
+    textPath.setAttribute("fill","black");
+
+    const textNode = document.createTextNode("SI");
+    textPath.appendChild(textNode);
+
+    let text= document.createElementNS(svgNS,"text");
+    text.appendChild(textPath);
+
+    g.appendChild(text);
+}
+
+
+let ton = 
+    bN + " " +
+    lC  + " " + bC + " " +
+    lC  + " " + bC + " " +
+    lC  + " " + bC + " " +
+    lC  + " " + bC + " " +
+    lC  + " " + bC + " " +
+    lC  + " " + bC + " " +
+    lC  + " " + bC + " " +
+    lC  + " " + bC + " " +
+    lC;
+
+let demiTon =
+    bN + " " +
+    lC + " " + bC + " " +
+    lC + " " + bC + " " +
+    lC + " " + bC + " " +
+    lC ;  
+
+let gamme = 
+    ton     + " " + 
+    ton     + " " + 
+    demiTon + " " + 
+    ton     + " " + 
+    ton     + " " +
+    ton     + " " + 
+    demiTon;
+
+
+let lesBornes = document.createElementNS(svgNS,"line");
+lesBornes.setAttribute("id","lesBornes");
+lesBornes.setAttribute("stroke-width",fondh);
+lesBornes.setAttribute("stroke-dasharray",gamme);
+lesBornes.setAttribute("stroke","black");
+lesBornes.setAttribute("x1",fondx);
+lesBornes.setAttribute("x2",fondx+long);
+lesBornes.setAttribute("y1",fondy+fondh/2);
+lesBornes.setAttribute("y2",fondy+fondh/2);
+
+g.appendChild(lesBornes);
+
+
+let lesDiatos = document.createElementNS(svgNS,"line");
+lesDiatos.setAttribute("id","lesDiatos");
+lesDiatos.setAttribute("stroke-width",fondh);
+let dashDiatos =
+
+"0" + " " +
+(bN) + " " + lC + " " +
+bC + " " + lC + " " +
+bC + " " + lC + " " +
+bC + " " + lC + " " +
+(bC*5+lC*5) + " " +
+
+"0" + " " +
+(bN) + " " + lC + " " +
+bC + " " + lC + " " +
+bC + " " + lC + " " +
+bC + " " + lC + " " +
+(bC*5+lC*5) + " " +
+
+"0" + " " +
+(bN) + " " + lC + " " +
+bC + " " + lC + " " +
+bC + " " + lC + " " +
+bC + " " + lC + " " +
+
+
+(bN) + " " + lC + " " +
+bC + " " + lC + " " +
+bC + " " + lC + " " +
+bC + " " + lC + " " +
+(bC*5+lC*5) + " " +
+
+"0" + " " +
+(bN) + " " + lC + " " +
+bC + " " + lC + " " +
+bC + " " + lC + " " +
+bC + " " + lC + " " +
+(bC*5+lC*5) + " " +
+
+"0" + " " +
+(bN) + " " + lC + " " +
+bC + " " + lC + " " +
+bC + " " + lC + " " +
+bC + " " + lC + " " +
+(bC*5+lC*5) + " " +
+
+"0" + " " +
+(bN) + " " + lC + " " +
+bC + " " + lC + " " +
+bC + " " + lC + " " +
+bC + " " + lC 
+
+
+
+;
+lesDiatos.setAttribute("stroke-dasharray",dashDiatos);
+lesDiatos.setAttribute("stroke","red");
+lesDiatos.setAttribute("x1",fondx);
+lesDiatos.setAttribute("x2",fondx+long);
+lesDiatos.setAttribute("y1",fondy+fondh/2);
+lesDiatos.setAttribute("y2",fondy+fondh/2);
+
+g.appendChild(lesDiatos);
+
+/*
+let nomDo = document.createElementNS(svgNS,"text");
+
+nomDo.setAttribute("id","nomDo");
+nomDo.setAttribute("x",fondx);
+nomDo.setAttribute("y","180");
+nomDo.appendChild(document.createTextNode("SOL"));
+g.appendChild(nomDo);
+
+let doBox=nomDo.getBBox();
+console.log(doBox);
+let leRayon=0.5*Math.sqrt(
+   doBox.width*doBox.width +
+   doBox.height*doBox.height
+   );
+*/
+
+
+/*
+
+let leCercle = document.createElementNS(svgNS,"circle");
+  leCercle.appendChild(g.firstChild);
+
+leCercle.setAttribute("fill","none");
+leCercle.setAttribute("stroke","red");
+g.appendChild(leCercle);
+console.log(leRayon);
+
+
+leCercle.setAttribute("cx",doBox.x + doBox.width/2);
+leCercle.setAttribute("cy",doBox.y + doBox.height/2);
+leCercle.setAttribute("r",leRayon);
+
+*/
+
+</script>
+
+</body>
+</html>
